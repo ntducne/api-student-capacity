@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\RecruitmentController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\PrintPDFController;
 use App\Http\Controllers\Admin\PrintExcelController;
+use App\Http\Controllers\Admin\QAController;
 use App\Http\Controllers\Admin\SupportController;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -453,6 +454,20 @@ Route::group([
     });
 
     Route::get('support-poly', [SupportController::class, 'index'])->name('admin.support');
+
+    Route::prefix('qa')->as('admin.qa.')->group(function () {
+        Route::get('', [QAController::class, 'index'])->name('index');
+        Route::get('/create', [QAController::class, 'create'])->name('create');
+        Route::post('/store', [QAController::class, 'store'])->name('store');
+        Route::get('/edit/{id}', [QAController::class, 'edit'])->name('edit');
+        Route::put('/update/{id}', [QAController::class, 'update'])->name('update');
+        Route::delete('/delete/{id}', [QAController::class, 'destroy'])->name('delete');
+
+        Route::get('/trash', [QAController::class,'trash'])->name('trash');
+        Route::put('/restore/{id}', [QAController::class, 'restore'])->name('restore');
+        Route::delete('/force-delete/{id}', [QAController::class, 'forceDelete'])->name('forceDelete');
+
+    });
 });
 
 

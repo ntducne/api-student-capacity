@@ -224,6 +224,12 @@ return [
                 "param" => '',
                 "link" => "admin.job",
             ],
+            [
+                "name" => "Hỏi đáp ",
+                "role" => $ROLE_HAS_ADMINS,
+                "param" => '',
+                "link" => "admin.qa.index",
+            ],
         ]
     ], // Cau hinh
 ];

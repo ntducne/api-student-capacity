@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ExamController;
 use App\Http\Controllers\Admin\KeywordController;
 use App\Http\Controllers\Admin\MajorController as AdminMajorController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\QAController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\RankUserController;
 use App\Http\Controllers\Admin\RecruitmentController;
@@ -123,5 +124,9 @@ Route::prefix('code-language')->group(function () {
     Route::get('', [CodeManagerController::class, 'getCodeLanguageAll']);
 });
 
-
+Route::prefix('qa')->as('qa.')->group(function () {
+    Route::get('/internship', [QAController::class, 'internship'])->name('internship');
+    Route::get('/job', [QAController::class, 'job'])->name('job');
+    Route::get('/event', [QAController::class, 'event'])->name('event');
+});
 
